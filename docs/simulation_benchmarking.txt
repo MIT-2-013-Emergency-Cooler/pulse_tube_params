@@ -1,0 +1,66 @@
+For starting, the followings answers were provided in an example case.
+
+"What is the internal volume of the cooler? [m^3]",
+
+2L or 0.002m^3
+
+"What is the average heat capacity of the item stored in the cooler? [Cp]",
+
+1 J/kgC, approximately a quarter that of water
+
+"How many kgs of that item are there? [kg]",
+
+2 kg
+
+"What is the density of that item? [kg/m^3]",
+
+250kg/m^3
+
+"What temperature is the cooler set at? [degrees C]",
+
+5C
+
+"What is the convection heat transfer coefficient in the cooler? [W/m^2 C]",
+
+10 W/m^2 C
+
+"What is the emissivity of the item stored in the cooler?",
+
+0.5
+
+"What is the thickness of the cooler inner surface [m]",
+
+0.01m
+
+"What is the k of the cooler inner surface? [W/m C]",
+
+0.1 W/mC
+
+"What is the thickness of the cooler walls? [m]",
+
+0.05m
+
+"What is the k of the cooler walls? [W/m C]",
+
+0.2
+
+"What is the thickness of the cooler outer surface? [m]",
+
+0.02
+
+"What is the k of the cooler outer surface? [W/m C]",
+
+0.2 W/mC
+
+"What is the convection heat transfer coefficient outside the cooler? [W/m^2 C]",
+
+100W/m^2C
+
+"What is the emissivity of the cooler outer surface?",
+
+0.5
+
+"What is the ambient temperature outside the cooler?"
+
+43
+
