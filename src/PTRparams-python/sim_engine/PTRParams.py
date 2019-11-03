@@ -12,20 +12,19 @@ import matplotlib.pyplot as plt
 
 class PTRParams:
     """
-    Class for functions related to modelling cooler.
+    Class for functions related to modelling PTR.
     """
 
     def __init__(self):
         self.energy = 0
-        self.questions = ["What is the internal volume of the cooler? [m^3]",
-                          "What is the average heat capacity of the item stored in the cooler? [Cp]",
-                          "How many kgs of that item are there? [kg]",
-                          "What is the density of that item? [kg/m^3]",
-                          "What temperature is the cooler set at? [degrees C]",
-                          "What is the convection heat transfer coefficient in the cooler? [W/m^2 C]",
-                          "What is the emissivity of the item stored in the cooler?",
-                          "What is the thickness of the cooler inner surface [m]",
-                          "What is the k of the cooler inner surface? [W/m C]",
+        self.questions = ["What is the dynamic viscosity of the working fluid? [nu]",
+                          "What is the thermal diffusivity of the working fluid? [alpha]",
+                          "What is the specific heat of the working fluid? [c_p]",
+                          "What is the base temperature? [degrees K]",
+                          "What is the stroke length? (typ. 10cm) [m]",
+                          "What is the piston diameter (typ. 6.7cm) [m]?",
+                          "What is the density of the working fluid?",
+                          "What is the mean pressure in the pulse tube? (typ. 20atm) [atm]",
                           "What is the thickness of the cooler walls? [m]",
                           "What is the k of the cooler walls? [W/m C]",
                           "What is the thickness of the cooler outer surface? [m]",
@@ -37,21 +36,21 @@ class PTRParams:
         self.item_temperature = [20, 25, 30, 35]  # [deg C] from best case to worst case, temperature of inserted item
         self.ambient_humidity = [0, 0.25, 0.5, 0.75, 1.0]  # RH from best to worst, humidity of ambient air
 
-    def get_cooler_params(self):
+    def get_PTR_params(self):
         """Asks a series of questions from user to get information on fridge in question.
 
         :return:
         """
-        cooler_params = []
+        PTR_params = []
         print("Welcome to Cooler Params Questions. \n Let's define a small cubic volume as an estimate on how much energy we'll need to cool it. \n")
         for i in range(len(self.questions)):
             while True:
                 try:
                     print(self.questions[i])
                     question_answer = float(input("\n"))
-                    cooler_params.append(question_answer)
+                    PTR_params.append(question_answer)
                     break
                 except ValueError:
                     print("I didn't get that, try again.")
 
-        return cooler_params
+        return PTR_params
