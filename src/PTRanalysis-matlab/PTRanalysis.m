@@ -30,10 +30,10 @@ lc = 0.7*TOSI;
 Ac = pi*dc^2/4;
 Vc = Ac*lc;
 % Pulse Tube
-dpt = 0.81*TOSI;
-lpt = 6*TOSI;
-Apt = pi*dpt^2/4;
-Vpt = Apt*lpt;
+dpt = 0.81*TOSI
+lpt = 6*TOSI
+Apt = pi*dpt^2/4
+Vpt = Apt*lpt
 % Warm HEX
 dh = 0.811*TOSI;
 lh = 0.7*TOSI;
@@ -130,6 +130,7 @@ subplot(2,1,1)
 semilogx(k,phase);xlabel('k');ylabel('Phase (deg)');
 grid on
 title("P-T Phase Shift and Cooling Power")
+xlim([1e-10, 1e-6])
 hold on
 subplot(2,1,2)
 semilogx(k,-Work,'k-.');
@@ -139,7 +140,29 @@ legend('Work','Qc')
 xlabel('k');
 ylabel('Cooling Power (W)');
 grid on
+xlim([1e-11, 1e-5])
 saveas(gcf, "phase_and_cooling.png")
+
+figure(2)
+semilogx(k,phase);xlabel('k');ylabel('Phase (deg)');
+grid on
+title("P-T Phase Shift")
+xlim([1e-10, 1e-6])
+improvePlot
+saveas(gcf, "phase.png")
+
+figure(3)
+semilogx(k,-Work,'k-.');
+hold on
+semilogx(k,Qc,'b');
+legend('Work','Qc')
+xlabel('k');
+ylabel('Cooling Power (W)');
+grid on
+xlim([1e-11, 1e-5])
+title("Cooling Power Ratio f(k)")
+improvePlot
+saveas(gcf, "cool_power.png")
 
 % Valve sizing and Cv
 % Based on Swagelok & Parker references
