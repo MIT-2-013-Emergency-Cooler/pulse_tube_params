@@ -7,17 +7,23 @@
 % This codebase needs to be built out further, perhaps translated to Python
 % TODO: input based calculations
 
+% Method:
+% 1. Find best 'k' by scanning for max cooling power given system
+% 2. Set k to best
+% 3. Vary a different system parameter for that k
+% 4. Look for gains in cooling power
+
 %% Constants
 %Inches to meters multiplier
 TOSI=0.0254;
 
 %% Dimensions
 % Swept Volume (cylinder)
-dswept=1.364*TOSI;
-lswept=0.1;
-f = 60; %Hz
-Aswept=pi*dswept^2/4;
-w = 2*pi*f;
+dswept = 1.364*TOSI;
+lswept = 0.1;
+f      = 60; %Hz
+Aswept = pi*dswept^2/4;
+w      = 2*pi*f;
 % Aftercooler (first HEX)
 do = 0.811*TOSI;
 lo = 0.7*TOSI;
@@ -34,17 +40,17 @@ lc = 0.7*TOSI;
 Ac = pi*dc^2/4;
 Vc = Ac*lc;
 % Pulse Tube
-dpt = 0.81*TOSI
-lpt = 6*TOSI
-Apt = pi*dpt^2/4
-Vpt = Apt*lpt
+dpt = 0.81*TOSI;
+lpt = 6*TOSI;
+Apt = pi*dpt^2/4;
+Vpt = Apt*lpt;
 % Warm HEX
 dh = 0.811*TOSI;
 lh = 0.7*TOSI;
 Ah = pi*dh^2/4;
 Vh = Ah*lh;
 % Choose temperatures
-Tc = 190; %K
+Tc = 120; %K
 Th = 300; %K
 Tr = (Th-Tc)/log(Th/Tc);
 % NOTE: Either properties of air or properties
@@ -122,7 +128,7 @@ MagC    = abs(c);
 % pressure or volume amplitude.
 % Pa=Va./MagC or Va=Pa.*MagC
 Pa      = Va./MagC;
-Work    = .5.*Pa.*Va.*sin(angle(c))*f;
+Work    = 0.5.*Pa.*Va.*sin(angle(c))*f;
 DV3     = Pa.*abs(b);
 Qc      = abs(-.5.*Pa.*DV3.*sin(angle(b))*f+i*w/(R*Tc)*(Pa*Vc+DV3*Po));
 
@@ -155,7 +161,7 @@ legend('Work','Qc')
 xlabel('k');
 ylabel('Cooling Power (W)');
 grid on
-xlim([1e-11, 1e-5])
+% xlim([1e-11, 1e-5])
 saveas(gcf, "phase_and_cooling.png")
 
 %% Phase Shift Plot
@@ -163,7 +169,7 @@ figure(2)
 semilogx(k,phase);xlabel('k');ylabel('Phase (deg)');
 grid on
 title("P-T Phase Shift")
-xlim([1e-10, 1e-6])
+% xlim([1e-10, 1e-6])
 improvePlot
 saveas(gcf, "phase.png")
 
@@ -176,7 +182,7 @@ legend('Work','Qc')
 xlabel('k');
 ylabel('Cooling Power (W)');
 grid on
-xlim([1e-11, 1e-5])
+% xlim([1e-11, 1e-5])
 title("Cooling Power Ratio f(k)")
 improvePlot
 saveas(gcf, "cool_power.png")
