@@ -27,7 +27,7 @@ calculations
 
 import numpy as np
 import matplotlib.pyplot as plt
-from pyfiglet import Figlet
+import pyfiglet
 
 # convert metric
 TOSI = 0.0254
@@ -61,7 +61,7 @@ dpt = 0.81 * TOSI
 lpt = 6 * TOSI
 Apt = pi * dpt ** 2 / 4
 Vpt = Apt * lpt
-# WarmHEX
+# Warm HEX
 dh = 0.811 * TOSI
 lh = 0.7 * TOSI
 Ah = pi * dh ** 2 / 4
@@ -164,6 +164,8 @@ def get_plot_outputs(k, phase, Work, Qc):
     :param Qc: Output Cooling Power
     :return:
     """
+    result = pyfiglet.figlet_format("PTR Simulation", font="slant")
+    print(result)
     # Plot outputs
     plt.figure(1)
     plt.subplot(2, 1, 1)
@@ -171,14 +173,14 @@ def get_plot_outputs(k, phase, Work, Qc):
     plt.xlabel('k')
     plt.ylabel('Phase (deg)')
     plt.title("P-T Phase Shift and Cooling Power")
-    plt.xlim([1e-10, 1e-5])
+    plt.xlim([1e-10, 1e-4])
     plt.subplot(2, 1, 2)
     plt.semilogx(k, Work)
     plt.semilogx(k, Qc)
     plt.legend(['Work', 'Qc'])
     plt.xlabel('k')
     plt.ylabel('Cooling Power (W)')
-    plt.xlim([1e-10, 1e-5])
+    plt.xlim([1e-10, 1e-4])
 
 
     # PhaseShift
@@ -187,7 +189,7 @@ def get_plot_outputs(k, phase, Work, Qc):
     plt.xlabel('k')
     plt.ylabel('Phase (deg)')
     plt.title("P-T Phase Shift")
-    plt.xlim([1e-10, 1e-5])
+    plt.xlim([1e-10, 1e-4])
     plt.show()
 
     # Cooling Power
@@ -197,7 +199,7 @@ def get_plot_outputs(k, phase, Work, Qc):
     plt.legend(['Work', 'Qc'])
     plt.xlabel('k')
     plt.ylabel('Cooling Power (W)')
-    plt.xlim([1e-10, 1e-5])
+    plt.xlim([1e-10, 1e-4])
     plt.title("Cooling Power Ratio f(k)")
     plt.show()
 
@@ -218,6 +220,8 @@ def get_valve_sizing():
     Pup = Pup * 6894.757 # upstream pressure in Pa
     Anoz = MassFlow / (gamma ** .5) * (2 / (gamma + 1)) ** (-(gamma + 1) / (2 * gamma - 1)) * np.sqrt(R * Th) / (Pup)
     Dnoz = np.sqrt(4 / pi * Anoz)
+    nozzle_sizing = [Pup, Anoz, Dnoz]
+    return(nozzle_sizing)
 
 if __name__ == '__main__':
     get_plot_outputs(k, phase, Work, Qc)
