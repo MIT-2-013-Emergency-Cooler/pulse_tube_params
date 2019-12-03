@@ -74,14 +74,14 @@ Tr = (Th-Tc)/log(Th/Tc);
 % nu=1.475e-5;      % m^2/s
 
 % Properties of nitrogen
-R=290;              % J/kg-K
-rhoo=1.116;         % kg/m^3
-gamma=1.4;          % Non-dimensional
-Patm=1.01e5;        % Pa
-mu=1.8042e-5;       % Pa-s
-cp=1041.4;          % J/kg-K
-kair=0.02607;       % W/m-K
-nu=1.6231-5;        % m^2/s
+% R=290;              % J/kg-K
+% rhoo=1.116;         % kg/m^3
+% gamma=1.4;          % Non-dimensional
+% Patm=1.01e5;        % Pa
+% mu=1.8042e-5;       % Pa-s
+% cp=1041.4;          % J/kg-K
+% kair=0.02607;       % W/m-K
+% nu=1.6231-5;        % m^2/s
 
 % Properties of Helium
 R     = 2077;       % J/kg-K
